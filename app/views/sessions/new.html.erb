@@ -1,8 +1,8 @@
 <div class="users-new-wrapper">
   <div class="container">
     <div class="col-md-offset-4 col-md-4 users-new-container">
-      <h1 class="users-new-logo text-center">新規登録</h1>
-      <%= form_for @user do |f| %>
+      <h1 class="users-new-logo text-center">ログイン</h1>
+      <%= form_for :session, url: login_path do |f| %>
         <div class="form-group">
           <%= f.label :name, class: 'logo-discription' %>
           <%= f.text_field :name, class: 'form-control' %>
@@ -12,12 +12,7 @@
           <%= f.password_field :password, class: 'form-control' %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :password_confirmation, class: 'logo-discription' %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-        </div>
-
-        <%= f.submit "登録", class: "btn btn-block btn-white" %>
+        <%= f.submit "ログイン", class: "btn btn-block btn-white" %>
       <% end %>
     </div>
   </div>

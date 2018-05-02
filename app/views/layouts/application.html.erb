@@ -9,6 +9,58 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-fixed-top navbar-default navbar-transparent">
+    	<div class="container-fluid">
+    		<div class="navbar-header">
+          <!-- 元ネタ　http://bootstrap3.cyberlab.info/components/navbar.html# -->
+    			<a class="navbar-brand" href="/">
+    				Band-SNS
+    			</a>
+    		</div>
+
+    		<div class="collapse navbar-collapse" id="navbarEexample3">
+    			<ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li>
+                <%= link_to user_path(current_user.id) do %>
+                  <h4>My Page</h4>
+                <% end %>
+              </li>
+    				  <li><a href="#">バンドを探す</a></li>
+    				  <li>
+                <%= link_to logout_path, method: :delete do %>
+                  <h4>ログアウト</h4>
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to login_path do %>
+                  ログイン
+                <% end %>
+              </li>
+            <% end %>
+    			</ul>
+
+
+
+
+
+        </div>
+    	</div>
+    </nav>
+
+    <% if flash[:danger] %>
+      <div class="alert alert-danger text-center">
+        <%= flash[:danger] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-success text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
