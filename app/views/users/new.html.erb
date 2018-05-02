@@ -1,2 +1,16 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="col-md-offset-4 col-md-4 users-new-container">
+      <h1 class="users-new-logo text-center">新規登録</h1>
+      <%= form_for @user do |f| %>
+        <div class="form-group">
+          <%= f.label :name, class: 'logo-discription' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+
+        <%= f.submit "登録", class: "btn btn-block btn-white" %>
+      <% end %>
+    </div>
+  </div>
+</div>
