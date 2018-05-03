@@ -26,7 +26,11 @@
                   <h4>My Page</h4>
                 <% end %>
               </li>
-    				  <li><a href="#">バンドを探す</a></li>
+              <li>
+                <%= link_to bands_path do %>
+                  <h4>バンドを探す</h4>
+                <% end %>
+              </li>
     				  <li>
                 <%= link_to logout_path, method: :delete do %>
                   <h4>ログアウト</h4>

@@ -65,9 +65,20 @@
   letter-spacing: 20px;
 }
 
+.bands-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: image-url('/bands-new.jpg');
+  background-size: cover;
+}
 
 .users-show-container {
-  background-color: gray;
+
+
+}
+
+.users-show-wrapper {
+  margin-top: 80px;
 }
 
 .navbar-transparent {
@@ -82,4 +93,15 @@
 
 .alert {
   margin-bottom: 0;
+}
+
+
+.band-container {
+  margin-top: 70px;
+}
+
+.band-image-box {
+  width: 300px;
+  height:300px;
+  object-fit: contain;
 }

@@ -1,11 +1,27 @@
 <div class="users-show-wrapper">
   <div class="container text-center">
     <div class="col-md-offset-2 col-md-8 users-show-container">
-      <h1>User Page</h1>
       <h5><%= @user.name %>さん、ようこそ！</h5>
 
-      <h5><%= current_user.name %></h5>
-      <h5><%= @current_user.name %></h5>
+      <h1>User Page</h1>
+      <p>
+        <%= current_user.name %>さんの登録バンド<br>
+        <% @bands.each do |band| %>
+          <%= link_to band.band_name, band_path(band.id) %><br>
+        <% end %>
+      </p>
+
+      <p>
+        <%= current_user.name %>さんのお気に入りバンド
+
+      </p>
+
+      <p>
+        <%= link_to new_band_path do %>
+          新規バンド登録はこちらから
+        <% end %>
+      </p>
+
 
     </div>
   </div>

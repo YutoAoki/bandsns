@@ -1,0 +1,12 @@
+
+<div class="band-container">
+  <%= image_tag '/rhcp.jpg' %>
+  <p>（仮の画像）</p>
+  <h1><%= @band.band_name %></h1>
+  <p><%= @band.band_bio %></p>
+</div>
+
+
+<%= link_to "#" do %>
+  <%= image_tag '/like-icon.png' %>
+<% end %>

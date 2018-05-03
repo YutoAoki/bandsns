@@ -6,11 +6,20 @@ class BandsController < ApplicationController
   def create
     @band = current_user.bands.new(band_params)
     if @band.save
-      redirect_to root_path, notice: '登録完了'
+      redirect_to band_path(@band.id), notice: '登録完了'
     else
       flash.now[:alert] = '登録に失敗しました'
       render :new
     end
+  end
+
+  def index
+    @bands = Band.all
+  end
+
+  def show
+    @band = Band.find_by(id: params[:id])
+
   end
 
   private
