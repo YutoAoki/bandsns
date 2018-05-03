@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources 'bands'
   resources 'users'
   root 'pages#index'
 

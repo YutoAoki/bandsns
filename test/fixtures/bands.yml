@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  band_bio: MyString
+  band_img: MyString
+  band_categ: MyString
+  band_name: MyString
+
+two:
+  user_id: 1
+  band_bio: MyString
+  band_img: MyString
+  band_categ: MyString
+  band_name: MyString

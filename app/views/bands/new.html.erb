@@ -1,0 +1,30 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="col-md-offset-4 col-md-4 users-new-container">
+      <h1 class="users-new-logo text-center">バンド新規登録</h1>
+      <%= form_for @band do |f| %>
+        <div class="form-group">
+          <%= f.label 'バンド名', class: 'logo-discription' %>
+          <%= f.text_field :band_name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'プロフィール', class: 'logo-discription' %>
+          <%= f.text_area :band_bio, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'アーティスト画像', class: 'logo-discription' %>
+          <%= f.file_field :band_img %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'ジャンル', class: 'logo-discription' %><br>
+          <%= f.select :band_categ, [["Rock", "Rock"],["Funk", "Funk"], ["Merodic Core", "Merodic Core"], ["Metal", "Metal"]] ,class: 'form-control' %>
+        </div>
+
+        <%= f.submit "登録", class: "btn btn-block btn-white" %>
+      <% end %>
+    </div>
+  </div>
+</div>
