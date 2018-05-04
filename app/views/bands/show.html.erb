@@ -1,14 +1,21 @@
 
 <div class="band-container">
   <%= image_tag @band.band_img.url %>
-  <!-- <p>（仮の画像）</p> -->
   <h1><%= @band.band_name %></h1>
   <p>ジャンル：<%= @band.band_categ %></p><br>
   <h4>バンドのプロフィール</h4>
   <p><%= @band.band_bio %></p>
+
+  <p>いいねした人<br>
+  <% @band.favorite_users.each do |user| %>
+    <%= user.name %>
+  <% end %>
+  </p>
+
+  <% if !@band.favorite_users.include?(current_user) %>
+
+    <%= link_to favorites_path(band_id: @band.id), method: :post do %>
+      <%= image_tag '/like-icon.png' %>
+    <% end %>
+  <% end %>
 </div>
-
-
-<%= link_to "#" do %>
-  <%= image_tag '/like-icon.png' %>
-<% end %>

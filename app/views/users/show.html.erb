@@ -12,8 +12,10 @@
       </p>
 
       <p>
-        <%= current_user.name %>さんのお気に入りバンド
-
+        <%= current_user.name %>さんのお気に入りバンド<br>
+        <% @favorite_bands.each do |favorite_band| %>
+          <%= link_to favorite_band.band_name, band_path(favorite_band.id) %><br>
+        <% end %>
       </p>
 
       <p>

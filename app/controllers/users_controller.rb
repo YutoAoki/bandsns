@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @bands = current_user.bands
     # session=nilの為、current_userメソッドが走らない。
     # users.showに行く前にsession[:user_id]を取得する必要があるが、やり方不明。
-
+    @favorite_bands = current_user.favorite_bands
   end
 
   private
