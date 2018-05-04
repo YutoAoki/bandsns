@@ -6,7 +6,7 @@ class BandsController < ApplicationController
   def create
     @band = current_user.bands.new(band_params)
     if @band.save
-      
+
       redirect_to band_path(@band.id), notice: '登録完了'
 
     else
@@ -17,7 +17,11 @@ class BandsController < ApplicationController
 
   def index
     @bands = Band.all
+    @search =Band.search(params[:q])
+    @bands = @search.result
   end
+
+
 
   def show
     @band = Band.find_by(id: params[:id])

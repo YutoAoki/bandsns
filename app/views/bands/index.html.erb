@@ -1,5 +1,17 @@
 <div class="topic-index-wrapper">
   <div class="container">
+
+    <%= search_form_for @search do |f| %>
+      <div class="form-group">
+        <%= f.label :band_name_cont, "Name" %>
+        <%= f.text_field :band_name_cont, class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Search" %>
+      </div>
+    <% end %>
+
+
     <% @bands.each do |band| %>
       <div class="row">
         <div class="col-md-5 col-md-offset-1">
