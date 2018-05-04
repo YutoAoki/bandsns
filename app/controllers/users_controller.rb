@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @bands = current_user.bands
+    # session=nilの為、current_userメソッドが走らない。
+    # users.showに行く前にsession[:user_id]を取得する必要があるが、やり方不明。
+
   end
 
   private

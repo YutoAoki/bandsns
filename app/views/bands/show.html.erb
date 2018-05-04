@@ -1,8 +1,10 @@
 
 <div class="band-container">
-  <%= image_tag '/rhcp.jpg' %>
-  <p>（仮の画像）</p>
+  <%= image_tag @band.band_img.url %>
+  <!-- <p>（仮の画像）</p> -->
   <h1><%= @band.band_name %></h1>
+  <p>ジャンル：<%= @band.band_categ %></p><br>
+  <h4>バンドのプロフィール</h4>
   <p><%= @band.band_bio %></p>
 </div>
 

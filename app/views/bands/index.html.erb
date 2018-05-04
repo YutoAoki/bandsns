@@ -21,7 +21,8 @@
 
         </div>
         <div class="col-md-5 col-md-offset-1">
-          <%= image_tag '/bands-new.jpg', class: 'band-image-box' %>
+          <!-- <%#= image_tag '/bands-new.jpg', class: 'band-image-box' %> -->
+          <%= image_tag band.band_img.url, class: 'band-image-box' %>
         </div>
       </div>
     <% end %>
