@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504022616) do
+ActiveRecord::Schema.define(version: 20180505090501) do
 
   create_table "bands", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20180504022616) do
     t.string "band_img"
     t.string "band_categ"
     t.string "band_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "band_id"
+    t.string "comment_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

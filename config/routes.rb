@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources 'bands'
   resources 'users'
+  resources 'comments'
+
   root 'pages#index'
 
   get '/login', to: 'sessions#new'

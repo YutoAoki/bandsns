@@ -17,6 +17,8 @@ class BandsController < ApplicationController
 
   def index
     @bands = Band.all
+    # ransack実装部分
+    # https://qiita.com/halspring/items/00bf12f248052433b24a　参考にしたページ
     @search =Band.search(params[:q])
     @bands = @search.result
   end
@@ -25,6 +27,11 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find_by(id: params[:id])
+    @comment = Comment.new
+
+    @comments = @band.comments
+
+    # @comment_user = User.find_by(user_id: user_id)
 
   end
 

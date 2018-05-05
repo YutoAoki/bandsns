@@ -4,7 +4,7 @@ class Band < ApplicationRecord
   mount_uploader :band_img, ImageUploader
   has_many :favorites
   has_many :favorite_users, through: :favorites, source: 'user'
-
+  has_many :comments
 
   validates :band_name, presence: true
   validates :band_img, presence: true

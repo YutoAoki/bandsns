@@ -3,9 +3,25 @@
 
     <%= search_form_for @search do |f| %>
       <div class="form-group">
-        <%= f.label :band_name_cont, "Name" %>
+        <%= f.label :band_name_cont, "バンド名で検索" %>
         <%= f.text_field :band_name_cont, class: "form-control" %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :band_bio_cont, "プロフィールで検索" %><br>
+        <%= f.text_field :band_bio_cont, class: "form-control" %>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :band_categ_eq, "ジャンルで検索" %><br>
+        <%= f.select :band_categ_eq, [["None", ""],["Rock", "Rock"],["Funk", "Funk"], ["Merodic Core", "Merodic Core"], ["Metal", "Metal"]], class: "form-control" %>
+      </div>
+
+      <!-- <%#= f.select :band_categ, [["Rock", "Rock"],["Funk", "Funk"], ["Merodic Core", "Merodic Core"], ["Metal", "Metal"]] ,class: 'form-control' %> -->
+
+
+
       <div class="actions">
         <%= f.submit "Search" %>
       </div>
@@ -19,6 +35,9 @@
             <h2 class="topic-author">
               バンド名：<%= link_to band.band_name, band_path(band.id) %>
             </h2>
+            <p>
+              いいね！の数：<%= band.favorites.all.count %>
+            </p>
             <p>
               ジャンル：<%= band.band_categ %>
             </p>

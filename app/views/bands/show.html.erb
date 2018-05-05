@@ -18,4 +18,24 @@
       <%= image_tag '/like-icon.png' %>
     <% end %>
   <% end %>
+
+  <%= form_for @comment, method: :post do |f| %>
+  <%= f.hidden_field :band_id, :value=>params[:id] %>
+
+    <div class="form-group">
+      <%= f.label 'コメント', class: 'logo-discription' %>
+      <%= f.text_area :comment_text, class: 'form-control' %>
+    </div>
+
+
+    <%= f.submit "投稿", class: "btn btn-block btn-white" %>
+  <% end %>
+
+
+  <% @comments.each do |comment_band| %>
+    <p>User Name: <%= comment_band.user.name %></p>
+    <p>Comment: <%= comment_band.comment_text %></p>
+    <p>-------------------------------</p>
+  <% end %>
+
 </div>
