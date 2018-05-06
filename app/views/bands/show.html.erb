@@ -5,6 +5,11 @@
   <p>ジャンル：<%= @band.band_categ %></p><br>
   <h4>バンドのプロフィール</h4>
   <p><%= @band.band_bio %></p>
+  <p>
+    <%= link_to edit_band_path do %>
+      Edit
+    <% end %>
+  </p>
 
   <p>いいねした人<br>
   <% @band.favorite_users.each do |user| %>
@@ -31,11 +36,12 @@
     <%= f.submit "投稿", class: "btn btn-block btn-white" %>
   <% end %>
 
+  <div class="comment-box">
+    <% @comments.each do |comment_band| %>
+      <p>User Name: <%= comment_band.user.name %></p>
+      <p>Comment: <%= comment_band.comment_text %></p>
+    <% end %>
+  </div>
 
-  <% @comments.each do |comment_band| %>
-    <p>User Name: <%= comment_band.user.name %></p>
-    <p>Comment: <%= comment_band.comment_text %></p>
-    <p>-------------------------------</p>
-  <% end %>
 
 </div>

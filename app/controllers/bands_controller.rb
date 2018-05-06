@@ -35,6 +35,25 @@ class BandsController < ApplicationController
 
   end
 
+
+
+  def edit
+    @band = Band.find_by(id: params[:id])
+
+  end
+
+  def update
+    @band = Band.find_by(id: params[:id])
+
+    if @band.update(band_params)
+      redirect_to band_path
+
+    else
+      render :edit
+
+    end
+  end
+
   private
   def band_params
     params.require(:band).permit(:band_name, :band_bio, :band_categ, :band_img)
