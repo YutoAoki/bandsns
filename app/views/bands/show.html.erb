@@ -5,11 +5,15 @@
   <p>ジャンル：<%= @band.band_categ %></p><br>
   <h4>バンドのプロフィール</h4>
   <p><%= @band.band_bio %></p>
-  <p>
-    <%= link_to edit_band_path do %>
-      Edit
-    <% end %>
-  </p>
+
+  <% if @band.user_id == current_user.id %>
+    <p>
+      <%= link_to edit_band_path do %>
+        Edit
+      <% end %>
+    </p>
+  <% end %>
+
 
   <p>いいねした人<br>
   <% @band.favorite_users.each do |user| %>

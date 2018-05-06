@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :forbid_login_user,{only: [:new, :create]}
+
   def new
   end
 
@@ -7,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in(user)
       redirect_to user_path(user.id), alert: 'ログインに成功しました！'
-      
+
     else
       flash.now[:danger] = 'ログインに失敗しました'
       render :new
@@ -28,6 +30,13 @@ class SessionsController < ApplicationController
   def log_out
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def forbid_login_user
+    if current_user != nil
+
+      redirect_to user_path(current_user.id)
+    end
   end
 
 

@@ -1,4 +1,8 @@
 class BandsController < ApplicationController
+  # before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
+  # before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
+  before_action :ensure_correct_user, {only: [:edit, :update]}
+
   def new
     @band = Band.new
   end
@@ -46,11 +50,20 @@ class BandsController < ApplicationController
     @band = Band.find_by(id: params[:id])
 
     if @band.update(band_params)
-      redirect_to band_path
+      redirect_to band_path, notice: "編集完了"
 
     else
+      flash.now[:alert] = '編集に失敗しました'
       render :edit
 
+    end
+  end
+
+  def ensure_correct_user
+    @band = Band.find_by(id: params[:id])
+    if current_user.id != @band.user_id
+      redirect_to user_path(current_user.id)
+      flash.now[:alert] = '権限がありません'
     end
   end
 
