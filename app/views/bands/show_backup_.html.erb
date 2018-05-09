@@ -1,0 +1,52 @@
+
+<div class="band-container">
+  <h1><%= @band.band_name %></h1>
+  <%= image_tag @band.band_img.url %>
+  <p>ジャンル：<%= @band.band_categ %></p><br>
+  <h4>バンドのプロフィール</h4>
+  <p><%= @band.band_bio %></p>
+
+
+
+  <p>いいねした人<br>
+  <% @band.favorite_users.each do |user| %>
+    <%= user.name %><br>
+  <% end %>
+  </p>
+
+  <% if !@band.favorite_users.include?(current_user) %>
+
+    <%= link_to favorites_path(band_id: @band.id), method: :post do %>
+      <%= image_tag '/like-icon.png' %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @comment, method: :post do |f| %>
+  <%= f.hidden_field :band_id, :value=>params[:id] %>
+
+    <div class="form-group">
+      <%= f.label 'コメント', class: 'logo-discription' %>
+      <%= f.text_area :comment_text, class: 'form-control' %>
+    </div>
+
+
+    <%= f.submit "投稿", class: "btn btn-block btn-white" %>
+  <% end %>
+
+  <div class="comment-box">
+    <% @comments.each do |comment_band| %>
+      <p>User Name: <%= comment_band.user.name %></p>
+      <p>Comment: <%= comment_band.comment_text %></p>
+    <% end %>
+  </div>
+
+  <% if @band.user_id == current_user.id %>
+    <p>
+      <%= link_to edit_band_path do %>
+        Editページ
+      <% end %>
+    </p>
+  <% end %>
+
+
+</div>

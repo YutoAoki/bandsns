@@ -1,61 +1,43 @@
-<div class="topic-index-wrapper">
-  <div class="container">
-
-    <%= search_form_for @search do |f| %>
-      <div class="form-group">
-        <%= f.label :band_name_cont, "バンド名で検索" %>
-        <%= f.text_field :band_name_cont, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :band_bio_cont, "プロフィールで検索" %><br>
-        <%= f.text_field :band_bio_cont, class: "form-control" %>
-      </div>
-
-
-      <div class="form-group">
-        <%= f.label :band_categ_eq, "ジャンルで検索" %><br>
-        <%= f.select :band_categ_eq, [["None", ""],["Rock", "Rock"],["Funk", "Funk"], ["Merodic Core", "Merodic Core"], ["Metal", "Metal"]], class: "form-control" %>
-      </div>
-
-      <!-- <%#= f.select :band_categ, [["Rock", "Rock"],["Funk", "Funk"], ["Merodic Core", "Merodic Core"], ["Metal", "Metal"]] ,class: 'form-control' %> -->
-
-
-
-      <div class="actions">
-        <%= f.submit "Search" %>
-      </div>
-    <% end %>
-
-
-    <% @bands.each do |band| %>
-      <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-          <div class="topic-index-single">
-            <h2 class="topic-author">
-              バンド名：<%= link_to band.band_name, band_path(band.id) %>
-            </h2>
-            <p>
-              いいね！の数：<%= band.favorites.all.count %>
-            </p>
-            <p>
-              ジャンル：<%= band.band_categ %>
-            </p>
-
-            <!-- <%#= image_tag band.band_img.url %> -->
-            <p class="topic-text">
-              -Profile-<br>
-              <%= band.band_bio %>
-            </p>
-          </div>
-
-
+<div class="band-index-wrapper">
+  <div class="container band-index-search">
+    <div class="col-md-6 col-md-offset-3">
+      <%= search_form_for @search do |f| %>
+        <div class="form-group">
+          <%= f.label :band_name_cont, "バンド名で検索" %>
+          <%= f.text_field :band_name_cont, class: "form-control" %>
         </div>
-        <div class="col-md-5 col-md-offset-1">
-          <!-- <%#= image_tag '/bands-new.jpg', class: 'band-image-box' %> -->
+
+        <div class="form-group">
+          <%= f.label :band_bio_cont, "プロフィールで検索" %><br>
+          <%= f.text_field :band_bio_cont, class: "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :band_categ_eq, "ジャンルで検索" %><br>
+          <%= f.select :band_categ_eq, [["None", ""],["Rock", "Rock"],["Funk", "Funk"], ["Merodic Core", "Merodic Core"], ["Metal", "Metal"]], class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Search" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-1">
+        <% @bands.each do |band| %>
+        <div class="img-flex-3 band-index-image-box">
+          <h4><%= link_to band.band_name, band_path(band.id) %></h4>
           <%= image_tag band.band_img.url, class: 'band-image-box' %>
         </div>
+        <% end %>
+
       </div>
-    <% end %>
+    </div>
   </div>
+
+
 </div>

@@ -23,9 +23,9 @@
   color: white;
 }
 
-.row {
-  margin-top: 100px;
-}
+// .row {
+//   margin-top: 100px;
+// }
 
 .btn-white {
   background-color: white;
@@ -112,6 +112,65 @@
 
 
 .comment-box {
-  background-color: gray;
+  background-color: white;
   margin-bottom: 10px;
+}
+
+.band-show-img {
+  width:1200px;
+  height:100%;
+}
+
+.band-show-wrapper {
+  background-color: white;
+  margin-top: 70px;
+}
+
+.band-show-comment {
+  margin-top: 0;
+}
+
+.band-show-bio {
+  margin-bottom: 30px;
+}
+
+.band-show-comment h2 {
+  margin-top: 0;
+}
+
+.band-show-like-user {
+  margin-top: 0;
+}
+
+.band-show-like-logo {
+  display: inline;
+  margin-bottom: 20px;
+}
+
+.band-show-heart-icon {
+  display:inline-block;
+}
+
+
+
+
+.band-index-search {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.band-index-image-box {
+  float: left;
+  margin-right: 30px;
+}
+
+.band-index-image-box h2 {
+  margin-bottom: 0;
+}
+
+.band-image-box {
+  width: 300px;
+  object-fit: contain;
+  // display: inline-block;
+
 }

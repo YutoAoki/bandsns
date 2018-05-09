@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
     @comment.band_id = params[:comment][:band_id]
     if @comment.save
-      redirect_to bands_path, notice: '登録完了'
+      redirect_to band_path(id: @comment.band_id), notice: '登録完了'
     else
        flash.now[:alert] = '登録に失敗しました'
        redirect_to root_path

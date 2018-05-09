@@ -1,51 +1,66 @@
+<div class="band-show-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="band-show-header">
+        <h1><%= @band.band_name %></h1>
+        <p>Category：<%= @band.band_categ %></p>
+      <div>
+        <%= image_tag @band.band_img.url, :class => "band-show-img" %>
+      </div>
+    </div>
+  </div>
 
-<div class="band-container">
-  <%= image_tag @band.band_img.url %>
-  <h1><%= @band.band_name %></h1>
-  <p>ジャンル：<%= @band.band_categ %></p><br>
-  <h4>バンドのプロフィール</h4>
-  <p><%= @band.band_bio %></p>
+  <div class="container band-show-bio">
+    <div class="row col-md-12">
+      <h2>Biography</h2>
+      <p><%= @band.band_bio %></p>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="band-show-like-user col-md-3">
+      <h2 class="band-show-like-logo">Liked!</h2>
+      <div class="band-show-heart-icon">
+        <% if !@band.favorite_users.include?(current_user) %>
+          <%= link_to favorites_path(band_id: @band.id), method: :post do %>
+            <%= image_tag '/like.png', :size => '20x20' %>
+          <% end %>
+        <% end %>
+      </div>
+
+
+
+      <% @band.favorite_users.each do |user| %>
+        <p><%= user.name %></p>
+      <% end %>
+    </div>
+
+    <div class="band-show-comment col-md-9">
+      <h2>Comment</h2>
+      <%= form_for @comment, method: :post do |f| %>
+        <%= f.hidden_field :band_id, :value=>params[:id] %>
+      <!-- <h2>Comment</h2> -->
+      <div class="form-group">
+        <%= f.text_area :comment_text, class: 'form-control' %>
+      </div>
+        <%= f.submit "投稿", class: "btn btn-block btn-white band-show-comment-btn" %>
+      <% end %>
+
+        <div class="band-show-comment-box">
+          <% @comments.each do |comment_band| %>
+            <p><%= comment_band.user.name %> 　=>　 <%= comment_band.comment_text %></p>
+          <% end %>
+        </div>
+    </div>
+  </div>
 
   <% if @band.user_id == current_user.id %>
     <p>
       <%= link_to edit_band_path do %>
-        Edit
+        管理者ページへ
       <% end %>
     </p>
   <% end %>
-
-
-  <p>いいねした人<br>
-  <% @band.favorite_users.each do |user| %>
-    <%= user.name %><br>
-  <% end %>
-  </p>
-
-  <% if !@band.favorite_users.include?(current_user) %>
-
-    <%= link_to favorites_path(band_id: @band.id), method: :post do %>
-      <%= image_tag '/like-icon.png' %>
-    <% end %>
-  <% end %>
-
-  <%= form_for @comment, method: :post do |f| %>
-  <%= f.hidden_field :band_id, :value=>params[:id] %>
-
-    <div class="form-group">
-      <%= f.label 'コメント', class: 'logo-discription' %>
-      <%= f.text_area :comment_text, class: 'form-control' %>
-    </div>
-
-
-    <%= f.submit "投稿", class: "btn btn-block btn-white" %>
-  <% end %>
-
-  <div class="comment-box">
-    <% @comments.each do |comment_band| %>
-      <p>User Name: <%= comment_band.user.name %></p>
-      <p>Comment: <%= comment_band.comment_text %></p>
-    <% end %>
-  </div>
-
 
 </div>

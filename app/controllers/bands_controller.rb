@@ -20,7 +20,10 @@ class BandsController < ApplicationController
   end
 
   def index
-    @bands = Band.all
+    @bands = Band.order("RANDOM()").limit(3) #うまいこといかない。@searchの@bandsが原因っぽ
+    # @bands = Band.all
+    # @hoges = Hoge.order("RAND()").limit(4)
+
     # ransack実装部分
     # https://qiita.com/halspring/items/00bf12f248052433b24a　参考にしたページ
     @search =Band.search(params[:q])
